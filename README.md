@@ -1,16 +1,25 @@
-# React + Vite
+# Employee Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple **CRUD-based application** to efficiently manage employee records. It helps admins add, view, update, and delete employee details through an easy-to-use interface.
 
-Currently, two official plugins are available:
+## 🚀 Features
+- Add new employees  
+- View detailed employee list  
+- Update employee information  
+- Delete employees  
+- Search & filter records  
+- Optional admin login system  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📂 Modules
+- **Employee Module:** CRUD operations for employees  
+- **Department Module:** Manage and assign departments  
+- **Authentication Module:** Admin login & session control  
 
-## React Compiler
+## ⚙️ How It Works
+1. Admin logs into the system  
+2. Dashboard displays all employees  
+3. Admin performs create, edit, or delete actions  
+4. All data is stored securely in the database  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎯 Objective
+To build a user-friendly system that digitizes and simplifies employee data management with accuracy and efficiency.
