@@ -1,12 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
 
 const Header = () => {
+  const { logout, loggedUser, employees, admin } = useContext(AuthContext);
+
+  if (!loggedUser) return null;
+
+  let displayName = "User";
+
+  if (loggedUser.role === "employee") {
+    const emp = employees.find((e) => e.email === loggedUser.email);
+    displayName = emp?.firstName || "Employee";
+  }
+
+  if (loggedUser.role === "admin") {
+    displayName = "Admin";
+  }
+
   return (
     <div className="flex items-center justify-between">
       <h1 className="text-xl font-medium">
-        Hello <br /> <span className="text-2xl font-bold">Jayesh 👋</span>
+        Hello <span className="text-2xl font-bold">{displayName} 👋</span>
       </h1>
-      <button className="bg-red-500 text-sm font-medium px-5 py-2">
+
+      <button
+        onClick={logout}
+        className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+      >
         Logout
       </button>
     </div>

@@ -1,13 +1,17 @@
-import React from "react";
 import Header from "../Header";
 import AdminForm from "../AdminForm";
-import TaskList from "../TaskList";
+import Footer from "../Footer";
 
 const AdminDashboard = () => {
   return (
-    <div className="p-6 h-screen w-full">
-      <Header />
-      <AdminForm />
+    <div className="min-h-screen flex flex-col">
+      <div className="p-6">
+        <Header />
+      </div>
+      <div className="flex-1 px-6 overflow-y-auto">
+        <AdminForm />
+      </div>
+      <Footer />
     </div>
   );
 };
