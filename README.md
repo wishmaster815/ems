@@ -1,25 +1,47 @@
-# Employee Management System
+# 🗂️ Task Management System
 
-A simple **CRUD-based application** to efficiently manage employee records. It helps admins add, view, update, and delete employee details through an easy-to-use interface.
+A **role-based task management application** built with **React**, featuring separate dashboards for **Admin** and **Employees**. The system allows task assignment, tracking, and status-based visualization in a clean, responsive UI.
+
+---
 
 ## 🚀 Features
-- Add new employees  
-- View detailed employee list  
-- Update employee information  
-- Delete employees  
-- Search & filter records  
-- Optional admin login system  
 
-## 📂 Modules
-- **Employee Module:** CRUD operations for employees  
-- **Department Module:** Manage and assign departments  
-- **Authentication Module:** Admin login & session control  
+### 🔐 Authentication
+- Admin & Employee login
+- Role-based access using Context API
+- Login and logout with session persistence
 
-## ⚙️ How It Works
-1. Admin logs into the system  
-2. Dashboard displays all employees  
-3. Admin performs create, edit, or delete actions  
-4. All data is stored securely in the database  
+### 👨‍💼 Admin Dashboard
+- Create and assign tasks to employees
+- View employee-wise task list
+- Task details include status, severity, and category
+- Status-based color indicators
 
-## 🎯 Objective
-To build a user-friendly system that digitizes and simplifies employee data management with accuracy and efficiency.
+### 👨‍💻 Employee Dashboard
+- Personalized greeting
+- Task overview (New, Active, Completed, Failed)
+- Scrollable task list within screen height
+- Severity-based task cards
+
+### 🎨 UI & UX
+- Responsive layout using Tailwind CSS
+- Header and footer remain inside viewport
+- Clean and readable task tables
+
+---
+
+## 🧠 Tech Stack
+- React
+- Context API
+- Tailwind CSS
+- LocalStorage
+- React Hot Toast
+
+---
+
+## ▶️ Getting Started
+
+```bash
+npm install
+npm run dev
+```
