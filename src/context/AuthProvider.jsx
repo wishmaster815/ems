@@ -58,6 +58,33 @@ const AuthProvider = ({ children }) => {
     toast.success("Logout Successful");
   };
 
+  const assignTask = (employeeEmail, newTask) => {
+    const updatedEmployees = userData.employees.map((emp) => {
+      if (emp.email === employeeEmail) {
+        return {
+          ...emp,
+          tasks: [...emp.tasks, newTask],
+          taskCounts: {
+            ...emp.taskCounts,
+            active: emp.taskCounts.active + 1,
+            newTask: emp.taskCounts.newTask + 1,
+          },
+        };
+      }
+      return emp;
+    });
+
+    const updatedData = {
+      ...userData,
+      employees: updatedEmployees,
+    };
+
+    setUserData(updatedData);
+    localStorage.setItem("employees", JSON.stringify(updatedEmployees));
+
+    toast.success("Task assigned successfully");
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -67,6 +94,7 @@ const AuthProvider = ({ children }) => {
         admin: userData.admin,
         login,
         logout,
+        assignTask,
       }}
     >
       {children}
