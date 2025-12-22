@@ -16,7 +16,7 @@ const employees = [
         newTask: true,
         completed: false,
         failed: false,
-        status: "New",
+        status: "Failed",
         taskTitle: "Update website",
         taskDescription: "Revamp the homepage design",
         detailedDescription:
@@ -129,7 +129,7 @@ const employees = [
         newTask: false,
         completed: true,
         failed: false,
-        status: "Completed",
+        status: "Failed",
         taskTitle: "Design new feature",
         taskDescription: "Create mockups for the new feature",
         detailedDescription:

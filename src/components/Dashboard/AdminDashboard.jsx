@@ -1,6 +1,7 @@
 import Header from "../Header";
 import AdminForm from "../AdminForm";
 import Footer from "../Footer";
+import TaskTable from "../TaskTable";
 
 const AdminDashboard = () => {
   return (
@@ -10,6 +11,7 @@ const AdminDashboard = () => {
       </div>
       <div className="flex-1 px-6 overflow-y-auto">
         <AdminForm />
+        <TaskTable />
       </div>
       <Footer />
     </div>
