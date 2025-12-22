@@ -85,6 +85,54 @@ const AuthProvider = ({ children }) => {
     toast.success("Task assigned successfully");
   };
 
+  const updateTaskStatus = (employeeEmail, taskIndex, newStatus) => {
+    const updatedEmployees = userData.employees.map((emp) => {
+      if (emp.email === employeeEmail) {
+        const oldTask = emp.tasks[taskIndex];
+        if (!oldTask) return emp;
+
+        if (oldTask.status === "Completed" || oldTask.status === "Failed") {
+          return emp;
+        }
+
+        const updatedTask = {
+          ...oldTask,
+          status: newStatus,
+          active: false,
+          newTask: false,
+          completed: newStatus === "Completed",
+          failed: newStatus === "Failed",
+        };
+
+        const updatedTasks = emp.tasks.map((t, i) =>
+          i === taskIndex ? updatedTask : t
+        );
+
+        const updatedCounts = { ...emp.taskCounts };
+
+        if (oldTask.status === "New") updatedCounts.newTask--;
+        if (oldTask.status === "In Progress") updatedCounts.active--;
+
+        if (newStatus === "Completed") updatedCounts.completed++;
+        if (newStatus === "Failed") updatedCounts.failed++;
+
+        return {
+          ...emp,
+          tasks: updatedTasks,
+          taskCounts: updatedCounts,
+        };
+      }
+      return emp;
+    });
+
+    setUserData((prev) => ({
+      ...prev,
+      employees: updatedEmployees,
+    }));
+
+    localStorage.setItem("employees", JSON.stringify(updatedEmployees));
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -95,6 +143,7 @@ const AuthProvider = ({ children }) => {
         login,
         logout,
         assignTask,
+        updateTaskStatus,
       }}
     >
       {children}

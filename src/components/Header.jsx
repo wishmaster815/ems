@@ -25,7 +25,7 @@ const Header = () => {
 
       <button
         onClick={logout}
-        className="bg-red-600 hover:bg-red-700 text-white text-sm font-semibold px-6 py-2.5 rounded-lg transition-colors duration-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+        className="font-semibold bg-red-600 hover:bg-red-700 hover:scale-95 px-4 py-2 rounded-lg text-white text-sm tracking-wide transition-all duration-200 shadow-md active:scale-95"
       >
         Logout
       </button>

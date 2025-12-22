@@ -5,18 +5,18 @@ const employees = [
     email: "e@e.com",
     password: "123",
     taskCounts: {
-      active: 2,
-      newTask: 1,
-      completed: 1,
-      failed: 0,
+      active: 3,
+      newTask: 2,
+      completed: 2,
+      failed: 1,
     },
     tasks: [
       {
-        active: true,
-        newTask: true,
-        completed: false,
-        failed: false,
         status: "Failed",
+        active: false,
+        newTask: false,
+        completed: false,
+        failed: true,
         taskTitle: "Update website",
         taskDescription: "Revamp the homepage design",
         detailedDescription:
@@ -26,11 +26,11 @@ const employees = [
         category: "Design",
       },
       {
+        status: "Completed",
         active: false,
         newTask: false,
         completed: true,
         failed: false,
-        status: "Completed",
         taskTitle: "Client meeting",
         taskDescription: "Discuss project requirements",
         detailedDescription:
@@ -40,11 +40,11 @@ const employees = [
         category: "Meeting",
       },
       {
+        status: "In Progress",
         active: true,
         newTask: false,
         completed: false,
         failed: false,
-        status: "In Progress",
         taskTitle: "Fix bugs",
         taskDescription: "Resolve bugs reported in issue tracker",
         detailedDescription:
@@ -54,11 +54,11 @@ const employees = [
         category: "Development",
       },
       {
+        status: "Completed",
         active: false,
         newTask: false,
         completed: true,
         failed: false,
-        status: "Completed",
         taskTitle: "Testing",
         taskDescription: "Test the latest build for bugs",
         detailedDescription:
@@ -68,11 +68,11 @@ const employees = [
         category: "QA",
       },
       {
+        status: "New",
         active: true,
         newTask: true,
         completed: false,
         failed: false,
-        status: "New",
         taskTitle: "Prepare presentation",
         taskDescription: "Prepare slides for upcoming client presentation",
         detailedDescription:
@@ -82,11 +82,11 @@ const employees = [
         category: "Presentation",
       },
       {
+        status: "In Progress",
         active: true,
         newTask: false,
         completed: false,
         failed: false,
-        status: "In Progress",
         taskTitle: "Code review",
         taskDescription: "Review the codebase for optimization",
         detailedDescription:
@@ -106,16 +106,16 @@ const employees = [
     taskCounts: {
       active: 1,
       newTask: 0,
-      completed: 1,
-      failed: 0,
+      completed: 0,
+      failed: 1,
     },
     tasks: [
       {
+        status: "In Progress",
         active: true,
         newTask: false,
         completed: false,
         failed: false,
-        status: "In Progress",
         taskTitle: "Database optimization",
         taskDescription: "Optimize queries for better performance",
         detailedDescription:
@@ -125,11 +125,11 @@ const employees = [
         category: "Database",
       },
       {
+        status: "Failed",
         active: false,
         newTask: false,
-        completed: true,
-        failed: false,
-        status: "Failed",
+        completed: false,
+        failed: true,
         taskTitle: "Design new feature",
         taskDescription: "Create mockups for the new feature",
         detailedDescription:
@@ -154,11 +154,11 @@ const employees = [
     },
     tasks: [
       {
+        status: "New",
         active: true,
         newTask: true,
         completed: false,
         failed: false,
-        status: "New",
         taskTitle: "Prepare presentation",
         taskDescription: "Prepare slides for upcoming client presentation",
         detailedDescription:
@@ -168,11 +168,11 @@ const employees = [
         category: "Presentation",
       },
       {
+        status: "In Progress",
         active: true,
         newTask: false,
         completed: false,
         failed: false,
-        status: "In Progress",
         taskTitle: "Code review",
         taskDescription: "Review the codebase for optimization",
         detailedDescription:
@@ -182,11 +182,11 @@ const employees = [
         category: "Development",
       },
       {
+        status: "Completed",
         active: false,
         newTask: false,
         completed: true,
         failed: false,
-        status: "Completed",
         taskTitle: "Testing",
         taskDescription: "Test the latest build for bugs",
         detailedDescription:
@@ -212,8 +212,9 @@ export const setLocalStorage = () => {
   localStorage.setItem("employees", JSON.stringify(employees));
   localStorage.setItem("admin", JSON.stringify(admin));
 };
+
 export const getLocalStorage = () => {
-  const employees = JSON.parse(localStorage.getItem("employees"));
-  const admin = JSON.parse(localStorage.getItem("admin"));
+  const employees = JSON.parse(localStorage.getItem("employees")) || [];
+  const admin = JSON.parse(localStorage.getItem("admin")) || [];
   return { employees, admin };
 };

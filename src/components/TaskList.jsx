@@ -8,7 +8,7 @@ const cardColors = {
 };
 
 const TaskList = () => {
-  const { loggedUser, employees } = useContext(AuthContext);
+  const { loggedUser, employees, updateTaskStatus } = useContext(AuthContext);
 
   if (!loggedUser) return null;
 
@@ -33,26 +33,36 @@ const TaskList = () => {
             <h3 className="bg-black/30 px-3 py-1 rounded-lg text-sm">
               {task.severity}
             </h3>
-            <h4 className="text-sm bg-black px-3 py-2 rounded-xl">
+            <h4 className="text-sm bg-black/40 px-3 py-1 rounded-lg">
               {task.taskDate}
             </h4>
           </div>
-
-          <h1 className="text-2xl font-bold mt-2">{task.taskTitle}</h1>
-
+          <h1 className="text-xl font-bold mt-2">{task.taskTitle}</h1>
           <p className="mt-2 text-sm opacity-90">{task.detailedDescription}</p>
-          <div className="flex flex-col items-center align-middle gap-2 ">
-            <div>
-              <button className="mt-2 font-bold bg-[#08CB00] px-2 py-2 rounded-lg">
-                mark as completed
+          <span className="inline-block mt-3 px-3 py-1 text-xs font-bold rounded-lg bg-black/40">
+            {task.status}
+          </span>
+          {task.status !== "Completed" && task.status !== "Failed" && (
+            <div className="flex flex-col gap-2 mt-4">
+              <button
+                onClick={() =>
+                  updateTaskStatus(loggedUser.email, index, "Completed")
+                }
+                className="uppercase font-semibold bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg text-white text-sm transition-all duration-200 shadow-md active:scale-95"
+              >
+                Mark as Completed
+              </button>
+
+              <button
+                onClick={() =>
+                  updateTaskStatus(loggedUser.email, index, "Failed")
+                }
+                className="uppercase font-semibold bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg text-white text-sm transition-all duration-200 shadow-md active:scale-95"
+              >
+                Mark as Failed
               </button>
             </div>
-            <div>
-              <button className="mt-1 font-bold bg-[#F5004F] px-2 py-2 rounded-lg">
-                mark as failed
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       ))}
     </div>
